@@ -34,6 +34,33 @@
         </div>
     </main>
 
+    <!-- ============================================
+         Botón flotante de instalación
+         Se muestra solo si beforeinstallprompt se disparó
+         y la app NO está instalada
+         ============================================ -->
+    <button id="install-btn" class="install-fab hidden" type="button" aria-label="Instalar aplicación">
+        <span class="install-fab-icon">⬇️</span>
+        <span class="install-fab-text">Instalar App</span>
+    </button>
+
+    <!-- ============================================
+         Modal de confirmación de instalación
+         ============================================ -->
+    <div id="install-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="install-modal-title">
+        <div class="modal-box">
+            <h2 id="install-modal-title">📲 Instalar Pokémon PWA</h2>
+            <p>Instala la app en tu dispositivo para acceder más rápido y usarla sin conexión.</p>
+            <div class="modal-actions">
+                <button id="install-confirm" class="btn-primary" type="button">Sí, instalar</button>
+                <button id="install-cancel" class="btn-secondary" type="button">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast para feedback del usuario -->
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
     <script src="js/pokemons.js"></script>
     <script src="js/app.js"></script>
 </body>

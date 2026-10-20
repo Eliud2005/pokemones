@@ -238,6 +238,158 @@ h1 {
 }
 
 /* ============================================
+   Botón flotante de instalación (FAB)
+   ============================================ */
+.install-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background: linear-gradient(135deg, #EE8130 0%, #FFB347 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(238, 129, 48, 0.45),
+                0 0 0 0 rgba(238, 129, 48, 0.7);
+    animation: pulse-install 2s infinite;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.install-fab:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 28px rgba(238, 129, 48, 0.55);
+}
+
+.install-fab:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.install-fab-icon {
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.install-fab-text {
+    white-space: nowrap;
+}
+
+/* Animación de pulso para llamar la atención */
+@keyframes pulse-install {
+    0%   { box-shadow: 0 6px 20px rgba(238,129,48,0.45), 0 0 0 0 rgba(238,129,48,0.7); }
+    70%  { box-shadow: 0 6px 20px rgba(238,129,48,0.45), 0 0 0 16px rgba(238,129,48,0); }
+    100% { box-shadow: 0 6px 20px rgba(238,129,48,0.45), 0 0 0 0 rgba(238,129,48,0); }
+}
+
+/* ============================================
+   Modal de instalación
+   ============================================ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 26px 22px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: slideUp 0.25s ease;
+}
+
+.modal-box h2 {
+    color: #EE8130;
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+}
+
+.modal-box p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 12px 22px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.btn-primary {
+    background: #EE8130;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(238, 129, 48, 0.4);
+}
+.btn-primary:hover { background: #c96a20; transform: translateY(-1px); }
+
+.btn-secondary {
+    background: #f1f1f1;
+    color: #555;
+}
+.btn-secondary:hover { background: #e0e0e0; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ============================================
+   Toast de feedback
+   ============================================ */
+.toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1200;
+    background: #333;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    max-width: 90vw;
+    text-align: center;
+    animation: slideUp 0.3s ease;
+}
+
+/* ============================================
    Responsive
    ============================================ */
 @media (max-width: 900px) {
@@ -263,4 +415,13 @@ h1 {
     .pokemon-detail h2 {
         font-size: 1.35rem;
     }
+
+    /* Ajuste del FAB en móvil */
+    .install-fab {
+        bottom: 16px;
+        right: 16px;
+        padding: 12px 18px;
+        font-size: 0.95rem;
+    }
+    .install-fab-icon { font-size: 1.15rem; }
 }
